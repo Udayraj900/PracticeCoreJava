@@ -1,0 +1,24 @@
+package HackerrankCodeTest;
+
+/**
+ * 
+ * @author RShaw
+ *
+ *         We define the rating for Alice's challenge to be the triplet , and
+ *         the rating for Bob's challenge to be the triplet .
+ * 
+ *         Your task is to find their comparison points by comparing with , with
+ *         , and with .
+ * 
+ *         If , then Alice is awarded point. If , then Bob is awarded point. If
+ *         , then neither person receives a point. Comparison points is the
+ *         total points a person earned.
+ */
+public class Triplet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

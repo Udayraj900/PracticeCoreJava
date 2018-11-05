@@ -1,0 +1,27 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class testin122 {
+	public void doProcess(int i, Process p) {
+		p.process(i);
+	}
+
+	public static void main(String args[]) {
+		testin122 tester = new testin122();
+		tester.doProcess(10, i -> {
+			System.out.println("value of i is:" + i);
+			//System.out.println(this);
+		});
+		
+		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
+		list.forEach(n -> System.out.println(n));    
+		 list.forEach(System.out::println);
+//		 list.forEach(System.out->println);
+//		 list.forEach(System.out:println);
+//		list.forEach(System.out::println());
+	}
+
+	interface Process {
+		void process(int i);
+	}
+}

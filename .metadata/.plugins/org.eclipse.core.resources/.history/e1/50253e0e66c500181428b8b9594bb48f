@@ -1,0 +1,17 @@
+package Thread;
+
+
+
+public class ThreadPractice {
+
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		MyThread t =  new MyThread();
+		t.start();
+		System.out.println(System.currentTimeMillis());
+		t.sleep(20000l);
+		System.out.println(System.currentTimeMillis());
+		
+	}
+}

@@ -1,0 +1,41 @@
+package maps;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
+
+public class HashMapSorting {
+
+	public static void main(String[] args) {
+
+		Map<String, String> codenames = new HashMap<String, String>();
+		codenames.put("JDK 1.1.4", "Sparkler");
+		codenames.put("J2SE 1.2", "Playground");
+		codenames.put("J2SE 1.3", "Kestrel");
+		codenames.put("J2SE 1.4", "Merlin");
+		codenames.put("J2SE 5.0", "Tiger");
+		codenames.put("Java SE 6", "Mustang");
+		codenames.put("Java SE 7", "Dolphin");
+
+		System.out.println("Map Without any sorting....");
+		printMap(codenames);
+		
+		
+		System.out.println("\nMap sort by Key asceding order....");
+		// TreeMap keeps all entries in sorted order
+		TreeMap<String, String> treeMap = new TreeMap<>(codenames);
+		printMap(treeMap);
+		
+		System.out.println("\nMap order by value....");
+		//printMap();
+	}
+	
+	public static <K, V> void printMap(Map<K, V> map) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            System.out.println(entry.getKey() 
+				+ "----->" + entry.getValue());
+        }
+    }
+
+}

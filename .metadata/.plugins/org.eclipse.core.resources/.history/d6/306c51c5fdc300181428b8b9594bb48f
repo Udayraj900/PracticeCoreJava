@@ -1,0 +1,21 @@
+package inheritence;
+
+ public class ClassA {
+		public String getMessage() {
+	        return "Hello";
+		}
+}
+
+class ClassDemo extends ClassA implements InterfaceA {
+	public static void main(String[] args) {
+        System.out.println(new ClassDemo().getMessage());
+    }
+	
+}
+
+class ClassDemo1  implements InterfaceA {
+	public static void main(String[] args) {
+        System.out.println(new ClassDemo().getMessage());
+    }
+	
+}

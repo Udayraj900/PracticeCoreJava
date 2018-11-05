@@ -1,0 +1,20 @@
+
+
+.errorClass {
+	color:red;
+}
+
+h2{
+color:white;
+background-color: black
+}
+
+table{
+	word-spacing: 2px;
+	margin: 5px;
+	width: 30%;
+}
+
+th{
+	text-align: left;
+}

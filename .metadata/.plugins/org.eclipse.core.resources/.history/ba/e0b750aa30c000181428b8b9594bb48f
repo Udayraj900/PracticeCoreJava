@@ -1,0 +1,23 @@
+package Arrays;
+
+import java.util.ArrayList;
+import java.util.List;
+ 
+public class ArrayListDemo2 {
+ 
+    public static void main(String[] args) {
+ 
+        List<Integer> list = new ArrayList<Integer>();
+        
+        list.add(10);
+        list.add(10);
+  
+        System.out.print("size 1 : "+list.size());// 2
+        list.remove(new Integer(10));// remove first occurrence of the matching element that should be an object
+        
+        System.out.print("size 2 : "+list.size());//1
+        list.remove(10);  // java.lang.IndexOutOfBoundsException: Index: 10, Size: 1
+        
+    }
+ 
+}

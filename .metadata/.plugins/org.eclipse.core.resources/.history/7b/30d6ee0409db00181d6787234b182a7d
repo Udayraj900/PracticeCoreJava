@@ -1,0 +1,29 @@
+package HackerrankCodeTest;
+
+import java.util.List;
+
+public class SaktimaanPower {
+
+	static int minPower(int[] nums) {
+		int minimumPower = 1;
+		int tempResult = 0;
+		for(int i=0;i<nums.length-1;i++) {
+			tempResult = minimumPower+nums[i];
+			if(tempResult < 0) {
+				minimumPower = minimumPower + Math.abs(tempResult);
+				i=-1;
+			}
+			else if(tempResult == 0) {
+				minimumPower = minimumPower + Math.abs(tempResult)+1 ;
+				i=-1;
+			}
+		}
+		return minimumPower;
+	}
+	public static void main( String args[]) {
+		
+		int[] arr1 = {-5,4,-2,3,1,-1,-6,-1,0,5};
+		int value = minPower(arr1);
+		System.out.println(value);
+	}
+}

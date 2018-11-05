@@ -1,0 +1,14 @@
+package HackerrankCodeTest;
+
+public class MinMaxSum {
+
+	 static void miniMaxSum(int[] arr) {
+
+
+	    }
+	public static void main(String[] args) {
+		int arr[] = { 1, 2, 9, 11, 5, 4 };
+		
+	}
+
+}

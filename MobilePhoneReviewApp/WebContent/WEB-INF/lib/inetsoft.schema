@@ -1,0 +1,59 @@
+# InetSoft Report Permissions Schema
+# 
+# Copyright(c) 1996-2003, InetSoft Technology Corp, All Rights Reserved.
+#
+# The software and information contained herein are copyrighted and
+# proprietary to InetSoft Technology Corp. This software is furnished
+# pursuant to a written license agreement and may be used, copied,
+# transmitted, and stored only in accordance with the terms of such
+# license and with the inclusion of the above copyright notice. Please
+# refer to the file "COPYRIGHT" for further copyright and licensing
+# information. This software and information or any other copies
+# thereof may not be provided or otherwise made available to any other
+# person.
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.1
+	NAME 'readusers'
+	DESC 'IDs of users that have read permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.2
+	NAME 'readgroups'
+	DESC 'IDs of groups that have read permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.3
+	NAME 'writeusers'
+	DESC 'IDs of users that have write permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.4
+	NAME 'writegroups'
+	DESC 'IDs of groups that have write permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.5
+	NAME 'deleteusers'
+	DESC 'IDs of users that have delete permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+attributetype ( 1.2.840.113556.1.8000.1291.1.6
+	NAME 'deletegroups'
+	DESC 'IDs of groups that have delete permission on a report resource'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	X-ORIGIN 'user defined' )
+
+objectclass ( 1.2.840.113556.1.8000.1291.2.1
+	NAME 'inetsoftreplet'
+	DESC 'Container for the permissions of a report resource'
+	SUP top
+	STRUCTURAL
+	MUST cn
+	MAY ( readusers $ readgroups $
+	      writeusers $ writegroups $
+	      deleteusers $ deletegroups ) )

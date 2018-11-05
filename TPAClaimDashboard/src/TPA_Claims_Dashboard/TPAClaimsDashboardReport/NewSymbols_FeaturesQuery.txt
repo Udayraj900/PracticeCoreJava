@@ -1,0 +1,52 @@
+SELECT   
+(SELECT TPA_NM FROM TTPA where TPA_ID=t.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'),  
+t.LOB_CD,  
+t.Description,   
+t.Year_to_Date,  
+t.Prior_Year_to_Date,  
+(t.Year_to_Date-t.Prior_Year_to_Date) as "Year to Date Change",  
+t.Current_Month,  
+t.Prior_Year_Current_Month  
+FROM  
+(  
+   SELECT  
+   a.TPA_ID,   
+   a.LOB_CD,  
+   case when (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd ) is null then 'N/A' else (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd )  end as Description,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as Year_to_Date,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end ) as Prior_Year_to_Date ,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end ) as Current_Month,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as Prior_Year_Current_Month  
+   FROM TCLM_SYMBOL a  
+   where a.TPA_ID = INT ('~~~~')   
+   and a.EXPIRATION_RSN_CD in ('','DEL')  
+   GROUP by a.TPA_ID,a.LOB_CD,a.MAJOR_CLASS_cd  
+union  
+SELECT  
+   a.TPA_ID,  
+   a.LOB_CD,  
+   'ZSummary' as Description,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as Year_to_Date,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end ) as Prior_Year_to_Date ,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end ) as Current_Month,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as Prior_Year_Current_Month  
+   FROM TCLM_SYMBOL a  
+   where a.TPA_ID = INT ('~~~~')  
+   and a.EXPIRATION_RSN_CD in ('','DEL')  
+   GROUP by a.TPA_ID,a.LOB_CD 
+	union
+   SELECT
+   a.TPA_ID,
+   'ZZTPASummary',
+   'ZZTPASummary',
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as Year_to_Date,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end ) as Prior_Year_to_Date ,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end ) as Current_Month,  
+   sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as Prior_Year_Current_Month  
+   FROM TCLM_SYMBOL a  
+   where a.TPA_ID = INT ('~~~~')  
+   and a.EXPIRATION_RSN_CD in ('','DEL')  
+   GROUP by a.TPA_ID  
+)t   
+where t.Year_to_Date>0 or t.Prior_Year_to_Date >0 or t.Current_Month > 0 or t.Prior_Year_Current_Month >0  
+order by t.TPA_ID,t.LOB_CD, t.Description  for read only with ur  

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/activation.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/db2jcc.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/db2jcc_license_cu.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/jxl.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/mail.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/poi-3.1-FINAL-20080629.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/poi-contrib-3.1-FINAL-20080629.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/poi-scratchpad-3.1-FINAL-20080629.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/sqljdbc.jar"/>
+	<classpathentry kind="lib" path="C:/RAD_Workspace/TPAIR/My_Workspace/ReportWriter/lib/sqljdbc4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

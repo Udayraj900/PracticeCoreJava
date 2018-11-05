@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;firstRowReset&apos; in &apos;TPAClaimDashboardReportGenerator.prepareRow(...)&apos; to &apos;firstColMerged&apos;&#x0D;&#x0A;- Original project: &apos;TPAClaimDashboard&apos;&#x0D;&#x0A;- Original element: &apos;TPAClaimDashboardReportGenerator.prepareRow(ResultSet, HSSFSheet, int, int, String).firstRowReset&apos;&#x0D;&#x0A;- Renamed element: &apos;firstRowReset&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;firstRowReset&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{TPAClaimDashboardReportGenerator.java[TPAClaimDashboardReportGenerator~prepareRow~QResultSet;~QHSSFSheet;~I~I~QString;@firstRowReset!15862!15890!15870!15882!Z!0!false" name="firstColMerged" references="true" stamp="1507622183960" version="1.0"/>
+</session>

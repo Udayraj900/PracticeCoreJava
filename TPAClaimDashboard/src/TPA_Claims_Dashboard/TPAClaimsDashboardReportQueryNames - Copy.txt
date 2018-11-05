@@ -1,0 +1,12 @@
+NewSymbols_FeaturesQuery.txt
+PendingSymbols_FeaturesQuery.txt
+ClosedSymbols_FeaturesQuery.txt
+Close_RatioQuery.txt
+Close_DurationQuery.txt
+PaidsQuery.txt
+ClosedCases_PaidQuery.txt
+ClosedCasesAverage_PaidQuery.txt
+OutstandingQuery.txt
+Average_OutstandingQuery.txt
+PendingCase_DurationQuery.txt
+RecoveriesQuery.txt

@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListTest {
+
+	public static void main(String[] args) {
+		
+		String obj1 = "xyz";
+
+		String obj2 = new String("xyz");
+		
+		String obj3 = obj1;
+
+		if(obj1 == obj2)
+		   System.out.println("obj1==obj2 is TRUE");
+		else
+		  System.out.println("obj1==obj2 is FALSE");
+		
+		if(obj1.equals(obj2))
+			 System.out.println("obj1.equals(obj2) is TRUE");
+		else
+		     System.out.println("obj1.equals(obj2) is FALSE");
+		
+		if(obj1 == obj3)
+			   System.out.println("obj1==obj3 is TRUE");
+			else
+			  System.out.println("obj1==obj3 is FALSE");
+		
+		if(obj1.matches(obj2))
+			   System.out.println("obj1==obj2 is TRUE");
+			else
+			  System.out.println("obj1==obj2 is FALSE");
+		
+		System.out.println(Math.round(10.55));
+		System.out.println(Math.nextUp(10.55));
+		System.out.println(Math.nextAfter(10.22, 0.001));
+		System.out.println(Math.floor(10.55));
+		
+	}
+}

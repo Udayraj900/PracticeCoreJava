@@ -1,0 +1,198 @@
+SELECT  
+(SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), 
+X.lob_cd, 
+X.Description,  
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.InclsudingCWPyearToDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end),  
+(case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.InclsudingCWPpreviousYearToDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end),  
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.InclsudingCWPyearToDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end)- (case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.InclsudingCWPpreviousYearToDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end), 
+(case when ( X.currentMonth =0 and Y.InclsudingCWPcurrentMonth_Reopen=0) then 0.00 else (Y.InclsudingCWPcurrentMonth *100.0/(X.currentMonth+Y.InclsudingCWPcurrentMonth_Reopen)) end), 
+(case when ( X.previousCurrentMonth =0 and Y.InclsudingCWPpreviousCurrentMonth_Reopen=0) then 0.00 else (Y.InclsudingCWPpreviousCurrentMonth *100.0/(X.previousCurrentMonth+Y.InclsudingCWPpreviousCurrentMonth_Reopen)) end), 
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.IMLYeartoDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end), 
+(case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.IMLPriorYeartoDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end), 
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.IMLYeartoDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end) - (case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.IMLPriorYeartoDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end) , 
+(case when ( X.currentMonth =0 and Y.InclsudingCWPcurrentMonth_Reopen=0) then 0.00 else (Y.IMLCurrentMonth *100.0/(X.currentMonth+Y.InclsudingCWPcurrentMonth_Reopen)) end),  
+(case when (X.previousCurrentMonth =0 and Y.InclsudingCWPpreviousCurrentMonth_Reopen=0) then 0.00 else (Y.IMLPriorMonth *100.0/(X.previousCurrentMonth+Y.InclsudingCWPpreviousCurrentMonth_Reopen)) end), 
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.CWPYeartoDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end),  
+(case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.CWPPriorYeartoDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end), 
+(case when ( X.yearTooDate =0 and Y.InclsudingCWPyearToDate_Reopen=0) then 0.00 else (Y.CWPYeartoDate *100.0/(X.yearTooDate+Y.InclsudingCWPyearToDate_Reopen)) end) - (case when ( X.previousYearToDate =0 and Y.InclsudingCWPpreviousYearToDate_Reopen=0) then 0.00 else (Y.CWPPriorYeartoDate *100.0/(X.previousYearToDate+Y.InclsudingCWPpreviousYearToDate_Reopen)) end),  
+(case when ( X.currentMonth =0 and Y.InclsudingCWPcurrentMonth_Reopen=0) then 0.00 else (Y.CWPCurrentMonth *100.0/(X.currentMonth+Y.InclsudingCWPcurrentMonth_Reopen)) end),  
+(case when (X.previousCurrentMonth =0 and Y.InclsudingCWPpreviousCurrentMonth_Reopen=0) then 0.00 else (Y.CWPPriorCurrentMonth *100.0/(X.previousCurrentMonth+Y.InclsudingCWPpreviousCurrentMonth_Reopen)) end) ,
+InclsudingCWPyearToDate_Reopen as CWPYTD , 
+InclsudingCWPpreviousYearToDate_Reopen as CWPPriorYTD ,
+(InclsudingCWPyearToDate_Reopen - InclsudingCWPpreviousYearToDate_Reopen ) as YTDChange, 
+InclsudingCWPcurrentMonth_Reopen as CWPCurrentMonthYTD ,
+InclsudingCWPpreviousCurrentMonth_Reopen as CWPPriorCurrentMonthYTD 
+FROM   
+(select 
+a.TPA_ID, 
+a.LOB_CD, 
+case when (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd ) is null then 'N/A' else (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd )  end as Description,
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as yearTooDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end) as previousYearToDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end) as currentMonth, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as previousCurrentMonth 
+from TCLM_SYMBOL a 
+where  a.TPA_ID = INT ('~~~~')  
+and a.LOSS_REPORTED_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  
+and a.ACCOUNT_DT<='----' 
+and a.EXPIRATION_RSN_CD in (' ', 'DEL') 
+group by a.TPA_ID, 
+a.LOB_CD, 
+a.MAJOR_CLASS_CD 
+union 
+select 
+a.TPA_ID, 
+a.LOB_CD, 
+'ZSummary' as Description, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as yearTooDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end) as previousYearToDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end) as currentMonth, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as previousCurrentMonth 
+from TCLM_SYMBOL a 
+where  a.TPA_ID = INT ('~~~~')  
+and a.LOSS_REPORTED_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  
+and a.ACCOUNT_DT<='----' 
+and a.EXPIRATION_RSN_CD in (' ', 'DEL') 
+group by a.TPA_ID, 
+a.LOB_CD 
+union 
+select 
+a.TPA_ID, 
+'ZZTPASummary', 
+'ZZTPASummary' as Description, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| '01' || '-' ||'01'))  and '----' then 1 else 0 end) as yearTooDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  and '####' then 1 else 0 end) as previousYearToDate, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date(YEAR('----')||'-'|| MONTH('----') || '-' || '01'))  and '----' then 1 else 0 end) as currentMonth, 
+sum(case when a.LOSS_REPORTED_DT BETWEEN (Date((YEAR('----') -1)||'-'|| MONTH('----') || '-' || '01'))  and '####' then 1 else 0 end) as previousCurrentMonth 
+from TCLM_SYMBOL a 
+where  a.TPA_ID = INT ('~~~~')  
+and a.LOSS_REPORTED_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'01'))  
+and a.ACCOUNT_DT<='----' 
+and a.EXPIRATION_RSN_CD in (' ', 'DEL') 
+group by a.TPA_ID with ur) X, 
+(select 
+a.TPA_ID, 
+a.LOB_CD, 
+case when (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd ) is null then 'N/A' else (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd )  end as Description,   
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then 1 else 0 end) as InclsudingCWPyearToDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate, 
+sum(case when c.LAST_CLOSE_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end )as CWPCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end ) as CWPPriorCurrentMonth, 
+sum(case when c.LAST_REOPEN_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='----' then 1 else 0 end) as InclsudingCWPyearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth_Reopen, 
+sum(case when c.LAST_REOPEN_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth_Reopen 
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')  
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT=c.LAST_CLOSE_DT 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and (c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  or c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31')) ) 
+group by a.TPA_ID, 
+a.LOB_CD, 
+a.MAJOR_CLASS_CD 
+union 
+select 
+a.TPA_ID, 
+a.LOB_CD, 
+'ZSummary' as Description, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then 1 else 0 end) as InclsudingCWPyearToDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate, 
+sum(case when c.LAST_CLOSE_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end )as CWPCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end ) as CWPPriorCurrentMonth, 
+sum(case when c.LAST_REOPEN_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='----' then 1 else 0 end) as InclsudingCWPyearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth_Reopen, 
+sum(case when c.LAST_REOPEN_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth_Reopen 
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')  
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT=c.LAST_CLOSE_DT 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and (c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  or c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31')) ) 
+group by a.TPA_ID, 
+a.LOB_CD 
+union 
+select 
+a.TPA_ID, 
+'ZZTPASummary', 
+'ZZTPASummary' as Description, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then 1 else 0 end) as InclsudingCWPyearToDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate, 
+sum(case when c.LAST_CLOSE_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM>0 or b.MD_PD_PTD_AM>0 or b.XPNS_PTD_AM>0 ) then 1 else 0 end ) as IMLPriorMonth, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPYeartoDate, 
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0 ) then 1 else 0 end )as CWPPriorYeartoDate, 
+sum(case when c.LAST_CLOSE_DT='----' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end )as CWPCurrentMonth, 
+sum(case when c.LAST_CLOSE_DT='####' and (b.IN_BI_PTD_AM=0 and b.MD_PD_PTD_AM=0 and b.XPNS_PTD_AM=0) then 1 else 0 end ) as CWPPriorCurrentMonth, 
+sum(case when c.LAST_REOPEN_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='----' then 1 else 0 end) as InclsudingCWPyearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_REOPEN_DT <='####' then 1 else 0 end) as InclsudingCWPpreviousYearToDate_Reopen, 
+sum(case when c.LAST_REOPEN_DT='----' then 1 else 0 end) as InclsudingCWPcurrentMonth_Reopen, 
+sum(case when c.LAST_REOPEN_DT='####' then 1 else 0 end ) as InclsudingCWPpreviousCurrentMonth_Reopen 
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')  
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT=c.LAST_CLOSE_DT 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and (c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  or c.LAST_REOPEN_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31')) ) 
+group by a.TPA_ID with ur) Y 
+where X.tpa_id=Y.tpa_id 
+and X.LOB_CD=Y.LOB_CD 
+and X.Description=Y.Description 
+order by X.tpa_id,X.LOB_CD,X.Description  with ur 

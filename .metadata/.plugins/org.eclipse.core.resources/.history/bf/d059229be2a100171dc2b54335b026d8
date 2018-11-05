@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+
+
+public class Testing_2 {
+
+	public static void main(String[] args) {
+		List<Integer> l = new ArrayList<Integer>();
+		l.add(0);
+		l.add(10);
+		l.add(20);
+		l.add(15);
+		l.add(25);
+		l.add(5);
+		
+		System.out.println(l);
+		
+		List<Integer> l1 = l.stream().filter(i -> i%2 != 0).collect(Collectors.toList());
+		
+		System.out.println(l1);
+		
+		List<Integer> l2 = l.stream().map(i->i*2).collect(Collectors.toList());
+		System.out.println(l2);
+	
+		List<Integer> l3 = l.stream().map(i->i*2).filter(i -> i%4 == 0).collect(Collectors.toList());
+		System.out.println(l3);
+		
+		List<Integer> l4 = l.stream().filter(i -> i%2 != 0).sorted().collect(Collectors.toList());
+				System.out.println(l4);
+				
+		List<String> ll =  new ArrayList<String>();
+		ll.add("D");
+		ll.add("B");
+		ll.add("A");
+		ll.add("C");
+		ll.add("F");
+		ll.add("G");
+		
+		Predicate<String> p1 = s-> s.compareTo("C")>0;
+		Predicate<String> p2 = s-> s.equals("B");
+		ll.removeIf(p1.negate().or(p2));
+		System.out.println(ll);
+		ll.removeIf(p1.negate().and(p2));
+		System.out.println(ll);
+	
+			ll.sort((s1,s2)-> s1.compareTo(s2));
+		System.out.println(ll);
+		
+	}
+
+}

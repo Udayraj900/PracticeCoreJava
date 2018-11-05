@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void getTimeZones()&apos; from &apos;TestingJava_8.main()&apos; to &apos;TestingJava_8&apos;&#x0D;&#x0A;- Original project: &apos;Test&apos;&#x0D;&#x0A;- Method name: &apos;getTimeZones&apos;&#x0D;&#x0A;- Destination type: &apos;TestingJava_8&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;getTimeZones&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;{TestingJava_8.java" name="getTimeZones" replace="false" selection="311 723" stamp="1501762722526" version="1.0" visibility="2"/>
+</session>

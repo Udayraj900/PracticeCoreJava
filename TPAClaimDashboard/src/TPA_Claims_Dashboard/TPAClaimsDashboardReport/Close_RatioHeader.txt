@@ -1,0 +1,23 @@
+TPA Name 
+Line Of Business 
+Major Class Description 
+Year to Date (Includes CWP) 
+Prior Year to Date (Includes CWP) 
+Year to Date Change (Includes CWP) 
+Current Month (Includes CWP) 
+Prior Year Current Month (Includes CWP) 
+Year to Date (Excludes CWP) 
+Prior Year to Date (Excludes CWP) 
+Year to Date Change (Excludes CWP) 
+Current Month (Excludes CWP) 
+Prior Year Current Month (Excludes CWP) 
+Year to Date (Only CWP) 
+Prior Year to Date (Only CWP) 
+Year to Date Change (Only CWP) 
+Current Month (Only CWP) 
+Prior Year Current Month (Only CWP) 
+Year to Date  
+Prior Year to Date 
+Year to Date Change
+Current Month  
+Prior Year Current Month

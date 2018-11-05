@@ -1,0 +1,13 @@
+package Arrays;
+
+public class RemovalOfElement {
+
+	public static void main(String[] args) {
+
+		int[] nums = {1,1,2,2,3,4,4,4,9,9};
+	}
+
+	public static int removeElement(int[] nums, int value) {
+		
+	}
+}

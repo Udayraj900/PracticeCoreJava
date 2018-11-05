@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;Servers&apos;&#x0D;&#x0A;- Original project: &apos;Servers&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Tomcat v7.0 Server at localhost (2)-config&#x0D;&#x0A;     Tomcat v7.0 Server at localhost (3)-config&#x0D;&#x0A;     Tomcat v7.0 Server at localhost-config&#x0D;&#x0A;     Tomcat v8.5 Server at localhost-config" description="Delete elements" element1="Tomcat v7.0 Server at localhost (2)-config" element2="Tomcat v7.0 Server at localhost (3)-config" element3="Tomcat v8.5 Server at localhost-config" element4="Tomcat v7.0 Server at localhost-config" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1509435965054" subPackages="false" version="1.0"/>
+</session>

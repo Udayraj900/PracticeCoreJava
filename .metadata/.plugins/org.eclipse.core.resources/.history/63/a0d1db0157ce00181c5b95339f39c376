@@ -1,0 +1,39 @@
+package Arrays;
+
+
+
+	public class MplusNArray {
+
+		public static void main(String[] args) {
+
+			/* Initialize arrays */
+			int mPlusN[] = { 2, 8, -1, -1, -1, 13, -1, 15, 20 };
+			int N[] = { 5, 7, 9, 25 };
+			int n = N.length;
+			int m = mPlusN.length - n;
+
+			/* Move the m elements at the end of mPlusN */
+			moveToEnd(mPlusN, m + n);
+
+			/* Merge N[] into mPlusN[] */
+			//mergearray.merge(mPlusN, N, m, n);
+
+			/* Print the resultant mPlusN */
+			//mergearray.printArray(mPlusN, m + n);
+		}
+		
+		 static void moveToEnd(int mPlusN[], int size)  
+		    { 
+		        int i, j = size - 1; 
+		        for (i = size - 1; i >= 0; i--)  
+		        { 
+		            if (mPlusN[i] != -1)  
+		            { 
+		                mPlusN[j] = mPlusN[i]; 
+		                j--; 
+		            } 
+		        } 
+		    } 
+	}
+
+

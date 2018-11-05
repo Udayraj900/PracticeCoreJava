@@ -1,0 +1,15 @@
+
+public class TestingJava_8 implements I1,I2{
+
+	public static void main(String[] args) {
+		
+	}
+
+	@Override
+	public void display() {
+		// TODO Auto-generated method stub
+		I1.super.display();
+		I2.super.display();
+	}
+
+}

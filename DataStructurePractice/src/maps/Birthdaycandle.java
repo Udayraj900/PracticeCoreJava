@@ -1,0 +1,46 @@
+package maps;
+
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+public class Birthdaycandle {
+
+	static int birthdayCakeCandles(int[] ar) {
+		Map<Integer, Integer> map = new HashMap<>();
+
+		for (int i : ar) {
+			if (map.containsKey(i)) {
+				Integer count = map.get(i);
+				map.put(i, ++count);
+			} else {
+				map.put(i, 1);
+			}
+
+		}
+		Map<Integer, Integer> sortedMap = map.entrySet().stream()
+				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, LinkedHashMap::new));
+		
+		for(Entry<Integer,Integer> entry : sortedMap.entrySet()) {
+			System.out.println(entry.getKey() +"==="+ entry.getValue());
+		}
+		
+		Entry<Integer,Integer> entry =
+				  sortedMap.entrySet().stream().findFirst().get(); 
+		return entry.getValue();
+		//return sortedMap.get(sortedMap.keySet().toArray()[0]);
+
+	}
+
+	public static void main(String[] args) {
+
+		int[] ar = { 3, 2, 1, 3 };
+		int result = birthdayCakeCandles(ar);
+		System.out.println(result);
+	}
+
+}

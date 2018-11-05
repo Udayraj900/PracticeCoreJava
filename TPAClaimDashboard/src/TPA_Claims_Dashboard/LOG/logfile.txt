@@ -1,0 +1,380 @@
+
+=========================================================
+               Report generation  started......          
+               Please wait............                   
+=========================================================
+TPAClaimsDashboardReport
+TPA Count:4
+Report for TPA :6
+Report for TPA :10
+Report for TPA :43
+Report for TPA :601
+2
+ClosedCasesAverage_PaidQuery.txt
+OutstandingQuery.txt
+
+**************ClosedCasesAverage_PaidQuery.txt**************
+query Name & Path : C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\ClosedCasesAverage_PaidQuery.txt
+inside for loop
+ SELECT  (SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), X.LOB_CD,  (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=X.MAJOR_CLASS_CD and LOB_CD=X.lob_cd ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end ), (case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end )-(case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end), (case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end) -(case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.MedYear_to_DateCount=0 then 0.00 else (X.MedYear_to_Date/X.MedYear_to_DateCount) end ), (case when X.MedPrior_Year_to_DateCount=0 then 0.00 else (X.MedPrior_Year_to_Date/X.MedPrior_Year_to_DateCount) end ), (case when X.MedCurrent_MonthCount=0 then 0.00 else (X.MedCurrent_Month/X.MedCurrent_MonthCount) end), (case when X.MedPrior_Year_Current_MonthCount=0 then 0.00 else (X.MedPrior_Year_Current_Month/X.MedPrior_Year_Current_MonthCount) end), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ), (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ) - (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpCurrent_MonthCount=0 then 0.00 else (X.ExpCurrent_Month/X.ExpCurrent_MonthCount) end), (case when X.ExpPrior_Year_Current_MonthCount=0 then 0.00 else (X.ExpPrior_Year_Current_Month/X.ExpPrior_Year_Current_MonthCount) end), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ), (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ) - (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDCurrent_MonthCount=0 and X.MedCurrent_MonthCount=0 and X.ExpCurrent_MonthCount=0)then 0.00 else ((X.INDCurrent_Month+ X.MedCurrent_Month + X.ExpCurrent_Month )/(X.INDCurrent_MonthCount+X.MedCurrent_MonthCount+ X.ExpCurrent_MonthCount)) end ), (case when (X.INDPrior_Year_Current_MonthCount=0 and X.MedPrior_Year_Current_MonthCount=0 and X.ExpPrior_Year_Current_MonthCount=0)then 0.00 else ((X.INDPrior_Year_Current_Month+ X.MedPrior_Year_Current_Month + X.ExpPrior_Year_Current_Month )/(X.INDPrior_Year_Current_MonthCount+X.MedPrior_Year_Current_MonthCount+ X.ExpPrior_Year_Current_MonthCount)) end ) FROM  (select a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as  INDPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as  MedPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as  ExpPrior_Year_Current_MonthCount FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c where a.TPA_ID  = INT ('6') and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and c.TPA_ID=a.TPA_ID and c.CLIENT_CD=a.CLIENT_CD and c.BRANCH_NO=a.BRANCH_NO and c.CASE_NO=a.CASE_NO and c.CASE_SYMBOL_NO=a.CASE_SYMBOL_NO and c.SYMBOL_CREATE_DT=a.SYMBOL_CREATE_DT  and c.LAST_CLOSE_DT>='01/31/2016' and LAST_CLOSE_DT<='07/31/2017' and b.FINCL_XPIR_DT='12/31/9999' and b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017' group by a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD with ur ) X  order by X.tpa_id, X.lob_cd, X.MAJOR_CLASS_CD with ur  
+DATABASE connected....
+query Name & Path : C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\ClosedCasesAverage_PaidQuery.txt
+inside for loop
+ SELECT  (SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), X.LOB_CD,  (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=X.MAJOR_CLASS_CD and LOB_CD=X.lob_cd ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end ), (case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end )-(case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end), (case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end) -(case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.MedYear_to_DateCount=0 then 0.00 else (X.MedYear_to_Date/X.MedYear_to_DateCount) end ), (case when X.MedPrior_Year_to_DateCount=0 then 0.00 else (X.MedPrior_Year_to_Date/X.MedPrior_Year_to_DateCount) end ), (case when X.MedCurrent_MonthCount=0 then 0.00 else (X.MedCurrent_Month/X.MedCurrent_MonthCount) end), (case when X.MedPrior_Year_Current_MonthCount=0 then 0.00 else (X.MedPrior_Year_Current_Month/X.MedPrior_Year_Current_MonthCount) end), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ), (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ) - (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpCurrent_MonthCount=0 then 0.00 else (X.ExpCurrent_Month/X.ExpCurrent_MonthCount) end), (case when X.ExpPrior_Year_Current_MonthCount=0 then 0.00 else (X.ExpPrior_Year_Current_Month/X.ExpPrior_Year_Current_MonthCount) end), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ), (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ) - (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDCurrent_MonthCount=0 and X.MedCurrent_MonthCount=0 and X.ExpCurrent_MonthCount=0)then 0.00 else ((X.INDCurrent_Month+ X.MedCurrent_Month + X.ExpCurrent_Month )/(X.INDCurrent_MonthCount+X.MedCurrent_MonthCount+ X.ExpCurrent_MonthCount)) end ), (case when (X.INDPrior_Year_Current_MonthCount=0 and X.MedPrior_Year_Current_MonthCount=0 and X.ExpPrior_Year_Current_MonthCount=0)then 0.00 else ((X.INDPrior_Year_Current_Month+ X.MedPrior_Year_Current_Month + X.ExpPrior_Year_Current_Month )/(X.INDPrior_Year_Current_MonthCount+X.MedPrior_Year_Current_MonthCount+ X.ExpPrior_Year_Current_MonthCount)) end ) FROM  (select a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as  INDPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as  MedPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as  ExpPrior_Year_Current_MonthCount FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c where a.TPA_ID  = INT ('10') and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and c.TPA_ID=a.TPA_ID and c.CLIENT_CD=a.CLIENT_CD and c.BRANCH_NO=a.BRANCH_NO and c.CASE_NO=a.CASE_NO and c.CASE_SYMBOL_NO=a.CASE_SYMBOL_NO and c.SYMBOL_CREATE_DT=a.SYMBOL_CREATE_DT  and c.LAST_CLOSE_DT>='01/31/2016' and LAST_CLOSE_DT<='07/31/2017' and b.FINCL_XPIR_DT='12/31/9999' and b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017' group by a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD with ur ) X  order by X.tpa_id, X.lob_cd, X.MAJOR_CLASS_CD with ur  
+DATABASE connected....
+query Name & Path : C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\ClosedCasesAverage_PaidQuery.txt
+inside for loop
+ SELECT  (SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), X.LOB_CD,  (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=X.MAJOR_CLASS_CD and LOB_CD=X.lob_cd ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end ), (case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end )-(case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end), (case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end) -(case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.MedYear_to_DateCount=0 then 0.00 else (X.MedYear_to_Date/X.MedYear_to_DateCount) end ), (case when X.MedPrior_Year_to_DateCount=0 then 0.00 else (X.MedPrior_Year_to_Date/X.MedPrior_Year_to_DateCount) end ), (case when X.MedCurrent_MonthCount=0 then 0.00 else (X.MedCurrent_Month/X.MedCurrent_MonthCount) end), (case when X.MedPrior_Year_Current_MonthCount=0 then 0.00 else (X.MedPrior_Year_Current_Month/X.MedPrior_Year_Current_MonthCount) end), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ), (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ) - (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpCurrent_MonthCount=0 then 0.00 else (X.ExpCurrent_Month/X.ExpCurrent_MonthCount) end), (case when X.ExpPrior_Year_Current_MonthCount=0 then 0.00 else (X.ExpPrior_Year_Current_Month/X.ExpPrior_Year_Current_MonthCount) end), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ), (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ) - (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDCurrent_MonthCount=0 and X.MedCurrent_MonthCount=0 and X.ExpCurrent_MonthCount=0)then 0.00 else ((X.INDCurrent_Month+ X.MedCurrent_Month + X.ExpCurrent_Month )/(X.INDCurrent_MonthCount+X.MedCurrent_MonthCount+ X.ExpCurrent_MonthCount)) end ), (case when (X.INDPrior_Year_Current_MonthCount=0 and X.MedPrior_Year_Current_MonthCount=0 and X.ExpPrior_Year_Current_MonthCount=0)then 0.00 else ((X.INDPrior_Year_Current_Month+ X.MedPrior_Year_Current_Month + X.ExpPrior_Year_Current_Month )/(X.INDPrior_Year_Current_MonthCount+X.MedPrior_Year_Current_MonthCount+ X.ExpPrior_Year_Current_MonthCount)) end ) FROM  (select a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as  INDPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as  MedPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as  ExpPrior_Year_Current_MonthCount FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c where a.TPA_ID  = INT ('43') and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and c.TPA_ID=a.TPA_ID and c.CLIENT_CD=a.CLIENT_CD and c.BRANCH_NO=a.BRANCH_NO and c.CASE_NO=a.CASE_NO and c.CASE_SYMBOL_NO=a.CASE_SYMBOL_NO and c.SYMBOL_CREATE_DT=a.SYMBOL_CREATE_DT  and c.LAST_CLOSE_DT>='01/31/2016' and LAST_CLOSE_DT<='07/31/2017' and b.FINCL_XPIR_DT='12/31/9999' and b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017' group by a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD with ur ) X  order by X.tpa_id, X.lob_cd, X.MAJOR_CLASS_CD with ur  
+DATABASE connected....
+query Name & Path : C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\ClosedCasesAverage_PaidQuery.txt
+inside for loop
+ SELECT  (SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), X.LOB_CD,  (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=X.MAJOR_CLASS_CD and LOB_CD=X.lob_cd ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end ), (case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDYear_to_DateCount=0 then 0.00 else (X.INDYear_to_Date/X.INDYear_to_DateCount) end )-(case when X.INDPrior_Year_to_DateCount=0 then 0.00 else (X.INDPrior_Year_to_Date/X.INDPrior_Year_to_DateCount) end ), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end), (case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.INDCurrent_MonthCount=0 then 0.00 else (X.INDCurrent_Month/X.INDCurrent_MonthCount) end) -(case when X.INDPrior_Year_Current_MonthCount=0 then 0.00 else (X.INDPrior_Year_Current_Month/X.INDPrior_Year_Current_MonthCount) end), (case when X.MedYear_to_DateCount=0 then 0.00 else (X.MedYear_to_Date/X.MedYear_to_DateCount) end ), (case when X.MedPrior_Year_to_DateCount=0 then 0.00 else (X.MedPrior_Year_to_Date/X.MedPrior_Year_to_DateCount) end ), (case when X.MedCurrent_MonthCount=0 then 0.00 else (X.MedCurrent_Month/X.MedCurrent_MonthCount) end), (case when X.MedPrior_Year_Current_MonthCount=0 then 0.00 else (X.MedPrior_Year_Current_Month/X.MedPrior_Year_Current_MonthCount) end), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ), (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpYear_to_DateCount=0 then 0.00 else (X.ExpYear_to_Date/X.ExpYear_to_DateCount) end ) - (case when X.ExpPrior_Year_to_DateCount=0 then 0.00 else (X.ExpPrior_Year_to_Date/X.ExpPrior_Year_to_DateCount) end ), (case when X.ExpCurrent_MonthCount=0 then 0.00 else (X.ExpCurrent_Month/X.ExpCurrent_MonthCount) end), (case when X.ExpPrior_Year_Current_MonthCount=0 then 0.00 else (X.ExpPrior_Year_Current_Month/X.ExpPrior_Year_Current_MonthCount) end), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ), (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDYear_to_DateCount=0 and X.MedYear_to_DateCount=0 and X.ExpYear_to_DateCount=0) then 0.00 else ((X.INDYear_to_Date+ X.MedYear_to_Date + X.ExpYear_to_Date )/(X.INDYear_to_DateCount+X.MedYear_to_DateCount+ X.ExpYear_to_DateCount)) end ) - (case when (X.INDPrior_Year_to_DateCount=0 and X.MedPrior_Year_to_DateCount=0 and X.ExpPrior_Year_to_DateCount=0)then 0.00 else ((X.INDPrior_Year_to_Date+ X.MedPrior_Year_to_Date + X.ExpPrior_Year_to_Date )/(X.INDPrior_Year_to_DateCount+X.MedPrior_Year_to_DateCount+ X.ExpPrior_Year_to_DateCount)) end ), (case when (X.INDCurrent_MonthCount=0 and X.MedCurrent_MonthCount=0 and X.ExpCurrent_MonthCount=0)then 0.00 else ((X.INDCurrent_Month+ X.MedCurrent_Month + X.ExpCurrent_Month )/(X.INDCurrent_MonthCount+X.MedCurrent_MonthCount+ X.ExpCurrent_MonthCount)) end ), (case when (X.INDPrior_Year_Current_MonthCount=0 and X.MedPrior_Year_Current_MonthCount=0 and X.ExpPrior_Year_Current_MonthCount=0)then 0.00 else ((X.INDPrior_Year_Current_Month+ X.MedPrior_Year_Current_Month + X.ExpPrior_Year_Current_Month )/(X.INDPrior_Year_Current_MonthCount+X.MedPrior_Year_Current_MonthCount+ X.ExpPrior_Year_Current_MonthCount)) end ) FROM  (select a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,  sum(case when c.LAST_CLOSE_DT='07/31/2017' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,  sum(case when c.LAST_CLOSE_DT='07/31/2016' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as INDCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.IN_BI_PTD_AM>0 then 1 else 0 end) as  INDPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as MedCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.MD_PD_PTD_AM>0 then 1 else 0 end) as  MedPrior_Year_Current_MonthCount, sum(case when c.LAST_CLOSE_DT>='01/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpYear_to_DateCount,  sum(case when c.LAST_CLOSE_DT>='01/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpPrior_Year_to_DateCount,  sum(case when c.LAST_CLOSE_DT='07/31/2017' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as ExpCurrent_MonthCount,  sum(case when c.LAST_CLOSE_DT='07/31/2016' and  b.XPNS_PTD_AM>0 then 1 else 0 end) as  ExpPrior_Year_Current_MonthCount FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c where a.TPA_ID  = INT ('601') and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and c.TPA_ID=a.TPA_ID and c.CLIENT_CD=a.CLIENT_CD and c.BRANCH_NO=a.BRANCH_NO and c.CASE_NO=a.CASE_NO and c.CASE_SYMBOL_NO=a.CASE_SYMBOL_NO and c.SYMBOL_CREATE_DT=a.SYMBOL_CREATE_DT  and c.LAST_CLOSE_DT>='01/31/2016' and LAST_CLOSE_DT<='07/31/2017' and b.FINCL_XPIR_DT='12/31/9999' and b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017' group by a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD with ur ) X  order by X.tpa_id, X.lob_cd, X.MAJOR_CLASS_CD with ur  
+DATABASE connected....
+
+**************OutstandingQuery.txt**************
+query Name & Path : C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\OutstandingQuery.txt
+------------------------------
+ select  (SELECT TPA_NM FROM TTPA where TPA_ID=X.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), X.LOB_CD, X.Description, X.INDYearToDate, X.INDPiorYeartoDate, (X.INDYearToDate - X.INDPiorYeartoDate), X.MedYearToDate, X.MedPiorYeartoDate, (X.MedYearToDate -X.MedPiorYeartoDate), X.ExpYearToDate, X.ExpPiorYeartoDate, (X.ExpYearToDate-X.ExpPiorYeartoDate) from (select  a.TPA_ID, a.LOB_CD,  (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS WHERE MAJOR_CLASS_CD = a.MAJOR_CLASS_CD and LOB_CD = a.lob_cd) as Description, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.IN_BI_INCURRED_AM- b.IN_BI_PTD_AM) else 0 end ) as INDYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.IN_BI_INCURRED_AM- b.IN_BI_PTD_AM) else 0 end ) as INDPiorYeartoDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.MD_PD_INCURRED_AM- b.MD_PD_PTD_AM) else 0 end )as MedYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.MD_PD_INCURRED_AM- b.MD_PD_PTD_AM) else 0 end ) as MedPiorYeartoDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.XPNS_INCURRED_AM - b.XPNS_PTD_AM) else 0 end ) as ExpYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.XPNS_INCURRED_AM - b.XPNS_PTD_AM) else 0 end ) as ExpPiorYeartoDate FROM TCLM_SYMBOL a, TCLM_FINCL b where  a.TPA_ID in ( 006,010,043 ) and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and b.FINCL_VALTN_EFF_DT>='01/31/2016' and b.FINCL_XPIR_DT='12/31/9999' group by a.TPA_ID, a.LOB_CD,  a.MAJOR_CLASS_CD union select  a.TPA_ID, a.LOB_CD,  'ZSummary' as Description, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.IN_BI_INCURRED_AM- b.IN_BI_PTD_AM) else 0 end ) as INDYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.IN_BI_INCURRED_AM- b.IN_BI_PTD_AM) else 0 end ) as INDPiorYeartoDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.MD_PD_INCURRED_AM- b.MD_PD_PTD_AM) else 0 end ) as MedYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.MD_PD_INCURRED_AM- b.MD_PD_PTD_AM) else 0 end ) as MedPiorYeartoDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2017' and b.FINCL_VALTN_XPR_DT>'07/31/2017') then (b.XPNS_INCURRED_AM - b.XPNS_PTD_AM) else 0 end ) as ExpYearToDate, sum(case when (b.FINCL_VALTN_EFF_DT<='07/31/2016' and b.FINCL_VALTN_XPR_DT>'07/31/2016') then (b.XPNS_INCURRED_AM - b.XPNS_PTD_AM) else 0 end ) as ExpPiorYeartoDate FROM TCLM_SYMBOL a, TCLM_FINCL b where  a.TPA_ID in ( 006,010,043 ) and a.VALUATION_XPIRY_DT='12/31/9999'  and a.TPA_ID=b.TPA_ID and a.CLIENT_CD=b.CLIENT_CD and a.BRANCH_NO=b.BRANCH_NO and a.CASE_NO=b.CASE_NO and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  and b.FINCL_VALTN_EFF_DT>='01/31/2016' and b.FINCL_XPIR_DT='12/31/9999' group by a.TPA_ID, a.LOB_CD) X where X.INDYearToDate> 0 or X.INDPiorYeartoDate>0 or X.MedYearToDate >0 or X.MedPiorYeartoDate>0 or X.ExpYearToDate >0 or X.ExpPiorYeartoDate>0 order by X.tpa_id, X.lob_cd with ur  
+------------------------------
+DATABASE connected....
+ *****exeuteReportGeneration *******
+C:\Program Files\TPA_Claims_Dashboard\TPA_Claims_Dashboard\TPAClaimsDashboardReport\TPAClaimsDashboardReportPara.txt-----
+arrayListLength:402016: --- : 8: --- : 
+tableHeader size :::: first row :: 23
+Second Header row:::::: 
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+1::::First row :  CONSTITUTION STATE SERVICES::::4
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::First row :  AL::::4
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Other than Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  No-Fault Personal Injury Protect
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  GL::::9
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Additional Extended Coverage
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Wind & Hail (Excl Grow Crop) Property Damage
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  PL::::13
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  WC::::15
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Employers Liability
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+1::::last row :  ESIS::::17
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  AL::::17
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+mismatch:::::::::::::::::
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Other than Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Liability_Bodily Injury_Med Pay
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Uninsured Motorists
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  No-Fault Personal Injury Protect
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  GL::::24
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  PL::::26
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  WC::::28
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  US Longshoreman and Harbors
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Employers Liability
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+1::::last row :  ALTERNATIVE SERVICE CONCEPTS::::31
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  AL::::31
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+mismatch:::::::::::::::::
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Other than Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  GL::::35
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  PL::::37
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+2::::last row :  WC::::39
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+1::::last row :  Penser North America Inc.::::40
+Prepare Row:  Sheet name : ClosedCasesAverage_Paid
+Cell value :  Workers Compensation State Act
+arrayListLength:402016: --- : 8: --- : 
+tableHeader size :::: first row :: 12
+Second Header row:::::: 
+Prepare Row:  Sheet name : Outstanding
+1::::First row :  CONSTITUTION STATE SERVICES::::4
+Prepare Row:  Sheet name : Outstanding
+2::::First row :  AL::::4
+Cell value :  No-Fault Personal Injury Protect
+Prepare Row:  Sheet name : Outstanding
+mismatch:::::::::::::::::
+1::::last row :  CONSTITUTION STATE SERVICES::::5
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+mismatch:::::::::::::::::
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  GL::::9
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  PL::::12
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  WC::::15
+Cell value :  Employers Liability
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+1::::last row :  ESIS::::18
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  AL::::18
+Cell value :  Auto Liability_Bodily Injury_Med Pay
+Prepare Row:  Sheet name : Outstanding
+mismatch:::::::::::::::::
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Uninsured Motorists
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  No-Fault Personal Injury Protect
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Property Damage(Other than Collision )
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  GL::::26
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  PL::::29
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  WC::::32
+Cell value :  Employers Liability
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  US Longshoreman and Harbors
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+1::::last row :  ALTERNATIVE SERVICE CONCEPTS::::36
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  AL::::36
+Cell value :  Uninsured Motorists
+Prepare Row:  Sheet name : Outstanding
+mismatch:::::::::::::::::
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Property Damage(Other than Collision )
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Property Damage(Collision )
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Auto Liability(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  GL::::42
+Cell value :  Laibility (Other than Auto)Bodily Injury
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Laibility (Other than Auto)Property Damage
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  PL::::45
+Cell value :  Regual  Products(Bodily Injury)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Cell value :  Regual  Products(Property Damage)
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+2::::last row :  WC::::48
+Cell value :  Workers Compensation State Act
+Prepare Row:  Sheet name : Outstanding
+Prepare Row:  Sheet name : Outstanding
+File Name : TPAClaimsDashboard_092017.xls
+fout :java.io.FileOutputStream@16805c54
+outPutFolder:C:\Program Files\TPA_Claims_Dashboard\ReportOutput\Sep2017\TPAClaimsDashboard\TPAClaimsDashboard_092017.xls
+No of rows for TPA OutstandingQuery.txt : 2
+
+=========================================================
+               Report generation statistics              
+=========================================================
+
+Report Creation successfully completed....
+No of rows in report : 2
+Time taken for generating report  : 68 Sec
+
+=========================================================
+Sending mail...
+TPA Claims Dashboard Report
+Subject:TPA Claims Dashboard Report for September 2017 Valuation
+===========
+message<font size='2' face='Book Antiqua'> Hello ,<br> <br>Please access the TPA Claims Dashboard Report using below link:<br> <a href=file:C:\Program Files\TPA_Claims_Dashboard\ReportOutput\Sep2017\TPAClaimsDashboard\><br>C:\Program Files\TPA_Claims_Dashboard\ReportOutput\Sep2017\TPAClaimsDashboard\</a><br><br><b> File Name: </b>TPAClaimsDashboard_092017.xls<br><br> <b> Criteria:</b> This report is created for September 2017valuation.<br><br>Please revert in case of any questions.<br><br><br><b>Regards,<br>TPAIR-Support<br>MindTree Ltd<br></font>
+
+DEBUG: getProvider() returning javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]
+DEBUG SMTP: useEhlo true, useAuth false
+
+DEBUG: SMTPTransport trying to connect to host "usmxrelay.aig.com", port 25
+
+DEBUG SMTP RCVD: 220 PWGSMSFTWREL01.mail.aig.net Microsoft ESMTP MAIL Service ready at Mon, 9 Oct 2017 09:34:29 -0500
+
+DEBUG: SMTPTransport connected to host "usmxrelay.aig.com", port: 25
+
+DEBUG SMTP SENT: EHLO dwpcastbch01
+DEBUG SMTP RCVD: 250-PWGSMSFTWREL01.mail.aig.net Hello [10.97.44.117]
+250-SIZE 20971520
+250-PIPELINING
+250-DSN
+250-ENHANCEDSTATUSCODES
+250-STARTTLS
+250-AUTH
+250-8BITMIME
+250-BINARYMIME
+250 CHUNKING
+
+DEBUG SMTP SENT: MAIL FROM:<AIG-FUSION-TPAIR@adc.mindtree.com>
+DEBUG SMTP RCVD: 250 2.1.0 Sender OK
+
+DEBUG SMTP SENT: RCPT TO:<raj.shaw@adc.mindtree.com>
+DEBUG SMTP RCVD: 250 2.1.5 Recipient OK
+
+Verified Addresses
+  raj.shaw@adc.mindtree.com
+DEBUG SMTP SENT: DATA
+DEBUG SMTP RCVD: 354 Start mail input; end with <CRLF>.<CRLF>
+
+DEBUG SMTP SENT: 
+.
+DEBUG SMTP RCVD: 250 2.6.0 <1136643517.1507559672800.JavaMail.sachmeno@usmxrelay.aig.com> [InternalId=2186009] Queued mail for delivery
+
+DEBUG SMTP SENT: QUIT
+Email Sent

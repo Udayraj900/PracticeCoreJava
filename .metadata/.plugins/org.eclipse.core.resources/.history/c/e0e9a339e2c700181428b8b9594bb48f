@@ -1,0 +1,35 @@
+package HackerrankCodeTest;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Solution {
+
+   
+    static int simpleArraySum(int[] ar) {
+    	
+    	List<Integer> list = Arrays.stream(ar).boxed().collect(Collectors.toList());
+    	int sum = list.stream().mapToInt(Integer::intValue).sum();
+    	
+		return sum;
+    }
+static Long simpleArraySumLong(Long[] ar) {
+    	
+    	List<Long> list = Arrays.stream(ar).collect(Collectors.toList());
+    	long sum = list.stream().mapToLong(Long::longValue).sum();
+    	
+		return sum;
+    }
+	public static void main(String[] args) {
+
+		int[] arr = {1,2,3,4,5};
+		int result = simpleArraySum(arr);
+		System.out.println(result);
+		
+		long[] arr1 = {1000000001, 1000000002, 1000000003, 1000000004, 1000000005};
+		long result1 = simpleArraySumLong(arr1);
+		System.out.println(result);
+	}
+
+}

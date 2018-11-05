@@ -1,0 +1,138 @@
+select  
+(SELECT TPA_NM FROM TTPA where TPA_ID=Y.tpa_id and TXN_XPIRY_DT='12/31/9999' and PRODUCTION_IN='Y' and INIT_RECON_STAT_CD='CMPL'), 
+Y.LOB_CD, 
+Y.Description, 
+Y.INDYear_to_Date, 
+Y.INDPrior_Year_to_Date, 
+(Y.INDYear_to_Date - Y.INDPrior_Year_to_Date), 
+Y.INDCurrent_Month, 
+Y.INDPrior_Year_Current_Month, 
+Y.MedYear_to_Date, 
+Y.MedPrior_Year_to_Date, 
+(Y.MedYear_to_Date - Y.MedPrior_Year_to_Date), 
+Y.MedCurrent_Month, 
+Y.MedPrior_Year_Current_Month, 
+Y.ExpYear_to_Date, 
+Y.ExpPrior_Year_to_Date, 
+(Y.ExpYear_to_Date-Y.ExpPrior_Year_to_Date), 
+Y.ExpCurrent_Month, 
+Y.ExpPrior_Year_Current_Month,  
+(Y.INDYear_to_Date + Y.MedYear_to_Date + Y.ExpYear_to_Date), 
+(Y.INDPrior_Year_to_Date+Y.MedPrior_Year_to_Date+ Y.ExpPrior_Year_to_Date),  
+((Y.INDYear_to_Date + Y.MedYear_to_Date + Y.ExpYear_to_Date) - (Y.INDPrior_Year_to_Date+Y.MedPrior_Year_to_Date+ Y.ExpPrior_Year_to_Date)), 
+(Y.INDCurrent_Month+Y.MedCurrent_Month +Y.ExpCurrent_Month), 
+(Y.INDPrior_Year_Current_Month+Y.MedPrior_Year_Current_Month + Y.ExpPrior_Year_Current_Month) 
+from  
+( 
+select 
+a.TPA_ID, 
+a.LOB_CD,  
+case when (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd ) is null then 'N/A' else (SELECT MAJOR_CLASS_DS FROM TMAJOR_CLASS where MAJOR_CLASS_CD=a.MAJOR_CLASS_CD and LOB_CD=a.lob_cd )  end as Description,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month  
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')    
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT<='----' 
+and b.FINCL_VALTN_XPR_DT>'---- ' 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))    
+group by a.TPA_ID, 
+a.LOB_CD,  
+a.MAJOR_CLASS_CD  
+union  
+select 
+a.TPA_ID, a.LOB_CD, 
+'ZSummary' as Description, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month  
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')    
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT<='----' 
+and b.FINCL_VALTN_XPR_DT>'----' 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))    
+group by a.TPA_ID,a.LOB_CD  
+union  
+select 
+a.TPA_ID, 'ZZTPASummary', 
+'ZZTPASummary' as Description, 
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.IN_BI_PTD_AM else 0 end) as INDYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.IN_BI_PTD_AM else 0 end) as INDPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.IN_BI_PTD_AM else 0 end) as INDCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.IN_BI_PTD_AM else 0 end) as  INDPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.MD_PD_PTD_AM else 0 end) as MedYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.MD_PD_PTD_AM else 0 end) as MedPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.MD_PD_PTD_AM else 0 end) as MedCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.MD_PD_PTD_AM else 0 end) as  MedPrior_Year_Current_Month,    
+sum(case when c.LAST_CLOSE_DT>=(Date(YEAR('----')||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='----' then b.XPNS_PTD_AM else 0 end) as ExpYear_to_Date,     
+sum(case when c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))  and c.LAST_CLOSE_DT<='####' then b.XPNS_PTD_AM else 0 end) as ExpPrior_Year_to_Date,     
+sum(case when c.LAST_CLOSE_DT='----' then b.XPNS_PTD_AM else 0 end) as ExpCurrent_Month,     
+sum(case when c.LAST_CLOSE_DT='####' then b.XPNS_PTD_AM else 0 end) as  ExpPrior_Year_Current_Month  
+FROM TCLM_SYMBOL a, TCLM_FINCL b, TCLM_SYM_NON_CRTCL c 
+where  a.TPA_ID = INT ('~~~~')    
+and a.TPA_ID=b.TPA_ID 
+and a.CLIENT_CD=b.CLIENT_CD 
+and a.BRANCH_NO=b.BRANCH_NO 
+and a.CASE_NO=b.CASE_NO 
+and a.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and a.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and c.TPA_ID=b.TPA_ID 
+and c.CLIENT_CD=b.CLIENT_CD 
+and c.BRANCH_NO=b.BRANCH_NO 
+and c.CASE_NO=b.CASE_NO 
+and c.CASE_SYMBOL_NO=b.CASE_SYMBOL_NO 
+and c.SYMBOL_CREATE_DT=b.SYMBOL_CREATE_DT  
+and b.FINCL_VALTN_EFF_DT<='----' 
+and b.FINCL_VALTN_XPR_DT>'----' 
+and a.VALUATION_XPIRY_DT='12/31/9999' 
+and b.FINCL_XPIR_DT='12/31/9999' 
+and c.LAST_CLOSE_DT>=(Date((YEAR('----') -1) ||'-'|| '01' || '-' ||'31'))    
+group by a.TPA_ID 
+)Y 
+ORDER by Y.TPA_ID,Y.LOB_CD,Y.Description with ur  
