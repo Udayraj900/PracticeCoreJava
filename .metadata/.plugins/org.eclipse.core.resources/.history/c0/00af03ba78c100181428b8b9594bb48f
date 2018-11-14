@@ -1,9 +1,0 @@
-package maps;
-
-public class HashMapSorting {
-
-	public static void main(String[] args) {
-
-	}
-
-}

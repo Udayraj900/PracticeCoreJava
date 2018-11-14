@@ -1,9 +1,0 @@
-package Strings;
-
-public class StringPlays {
-
-	public StringPlays() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
