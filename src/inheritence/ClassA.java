@@ -1,0 +1,11 @@
+package inheritence;
+
+ public class ClassA {
+		public String getMessage() {
+	        return "Hello";
+		}
+}
+
+
+
+
